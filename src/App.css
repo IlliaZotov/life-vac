@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+body {
+  background: rgb(250, 200, 101);
+  background-size: 200% 200%;
+  animation: verticalBreathing 15s ease infinite;
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial;
+  color: rgb(0, 0, 0);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes verticalBreathing {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 40% 40%;
+  }
+  50% {
+    background-position: 80% 80%;
+  }
+  75% {
+    background-position: 20% 60%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
+#root {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+}
+.app {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 516px;
+margin-bottom: 100px;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+
+h2 {
+  font-weight: 700!important;
+  line-height: 1.2;
+  font-size: 28px;
+  text-align: center;
+}
+.answer-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 460px;
+}
+.image img {
+  width: 100%;
+}
+.lifevac-img {
+  display: flex;
+  justify-content: flex-start;
+}
+.lifevac-img img {
+  width: 150px;
+  height: auto;
+}
+.answer-section button {
+  font-family: Arial;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 24px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    border: 0px solid rgb(255, 255, 255);
+    padding: 20px;
+    margin-top: 10px;
+    width: 460px;
+    cursor: pointer;
+}
+.question-section {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.link {
+  font-family: Arial;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 24px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  border: 0px solid rgb(255, 255, 255);
+  padding: 20px;
+  margin-top: 10px;
+  width: 460px;
+  text-decoration: none;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Finish quiz */
+.showScore-section h2 {
+  font-weight: 700!important;
+  line-height: 1.2;
+  font-size: 32px;
+  text-align: center;
+  color: rgb(76, 185, 104);
+
+}
+.showScore-section p {
+  font-size: 25px;
+  font-weight: 800;
+}
+.showScore-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 460px;
+}
+.external-button {
+  font-family: Arial;
+  color: rgb(255, 255, 255);
+  background-color: rgb(222, 66, 38);
+  font-size: 22px;
+  border-radius: 7px;
+  border-width: 1px;
+  border-color: rgb(255, 255, 255);
+  border-style: solid;
+  text-decoration: none;
+  padding: 20px;
+}
+.countdown-txt, .countdown span {
+  color: red;
+  font-weight: 500;
+  margin: auto;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 799px) {
+  .app {
+    width: 90%;
+    margin-bottom: 0px;
   }
-  to {
-    transform: rotate(360deg);
+  .answer-section {
+    width: 100%;
+  }
+  .answer-section button {
+    width: 100%;
+  }
+  .question-section {
+    width: 100%;
+  }
+  .showScore-section {
+    width: 100%;
+  }
+  .image img {
+    width: 100%;
   }
 }
