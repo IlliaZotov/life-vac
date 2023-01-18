@@ -4,6 +4,8 @@ import { questions } from "./questions";
 import { useState, useEffect } from "react";
 import congrantsImg from "./images/congrats.jpeg";
 import lifeVac from "./images/lifevac.png";
+import correctImg from "./images/correct.svg";
+import wrongImg from "./images/wrong.svg";
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 
@@ -13,13 +15,19 @@ function InsertLink (props){
   if (props.hasLink) {
     return <a className="link" href={link}>Buy at full price of $79.99</a>
   }
- 
+}
+function ShowResult (props){
+  if (props.answer) {
+    return <p className="correct"><img src={correctImg}></img></p>
+  } 
 }
 
 export default function App() {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [showScore, setShowScore] = React.useState(false);
+  const [showResults, setShowResults] = React.useState(false)
+  const onClick = () => setShowResults(true)
 
   const handleClick = (isCorrect) => {
     if (isCorrect) {
@@ -28,12 +36,19 @@ export default function App() {
 
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
+      setTimeout(() => {
       setCurrentQuestion(nextQuestion);
+      }, 2000);
+
     } else {
       setShowScore(true);
     }
   };
-  
+  const Results = () => (
+    <div id="results" className="search-results">
+      Some Results
+    </div>
+  )
 
   return (
     <div className="app">
@@ -62,7 +77,7 @@ export default function App() {
           <section className="answer-section">
             {questions[currentQuestion].answerOptions.map((item) => (
               <button onClick={() => handleClick(item.isCorrect)}>
-                {item.answerText}
+                {item.answerText} { showResults ? <Results /> : null } />
               </button>
             ))}
             <InsertLink hasLink={questions[currentQuestion].link} />
